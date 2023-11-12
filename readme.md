@@ -97,3 +97,78 @@ fun main() {
     println(e)
 }
 ```
+
+### Collections
+
+코틀린은 다음과 같은 `Collections`을 제공하며, 모든 컬렉션은 가변하거나 읽기 전용일 수 있다.
+
+| Collection type | Description                    |
+|-----------------|--------------------------------|
+| Lists           | 순서가 있는 원소의 컬렉션                 |
+| Sets            | 순서가 없는 고유한 원소의 컬렉션             |
+| Maps            | 키-값 구조의 집합. 키는 고유하고 하나의 값에 매핑됨 |
+
+**List**
+
+리스트는 추가된 순서대로 원소를 저장하며, 중복을 허용한다.
+
+- 읽기 전용 List는 `listOf()`를 통해 `List`를 생성한다.
+- 가변 List는 `mutableListOf()`를 통해 `MutableList`를 생성한다.
+- List 생성 시, 코틀린은 List에 저장된 원소의 타입을 추론한다.
+- 원소 타입을 명시하기 위해서는 List 타입 선언 뒤 `<>`에 타입을 선언한다. 
+
+```kotlin
+// 문자열을 저장하는 읽기 전용 리스트
+val readOnlyShapes = listOf("triangle", "square", "circle")
+println(readOnlyShapes)
+
+// 원소 타입을 명시한 가변 리스트
+val shapes: MutableList<String> = mutableListOf("triangle", "square", "circle")
+println(shapes)
+```
+
+- 가변 리스트를 읽기 전용 리스트로 변경할 수 있다. (캐스팅)
+```kotlin
+// 가변 리스트를 불변하게 변경 (캐스팅)
+val shapes: MutableList<String> = mutableListOf("triangle", "square", "circle")
+val shapesLocked: List<String> = shapes
+```
+
+- index를 통해 원소 접근이 가능하다. `[]`
+```kotlin
+    // index를 통한 접근
+println("The first item in the list is: ${readOnlyShapes[0]}")
+```
+
+- 다음과 같은 함수(`extension functions`)를 사용할 수 있다.  
+(`extension functions`는 다른 장에서 알아보자)
+  - `.first()`: 첫번째 원소 가져오기 
+  - `.last()`: 마지막 원소 가져오기 
+  - `.count()`: 저장된 원소 개수 가져오기
+  - `.add()`: 원소를 추가하기
+  - `.remove()`: 원소를 제거하기
+
+```kotlin
+// 첫번째 원소 접근, 마지막 원소 접근
+println("The first item in the list is: ${readOnlyShapes.first()}")
+println("The first item in the list is: ${readOnlyShapes.last()}")
+
+// 원소 개수 얻기
+println("This list has ${readOnlyShapes.count()} items")
+
+// 특정 원소가 있는지 확인하기
+println("circle" in readOnlyShapes)
+
+// 가변 리스트에서 원소를 추가하거나 제거하기
+shapes.add("pentagon")
+println(shapes)
+
+shapes.remove("pentagon")
+println(shapes)
+```
+
+- `in` 연산자를 통해 특정 원소의 포함유무를 알 수 있다.
+```kotlin
+// 특정 원소가 있는지 확인하기
+println("circle" in readOnlyShapes)
+```
