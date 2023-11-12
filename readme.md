@@ -19,11 +19,11 @@ fun main() {
 
 ### Variables
 ```kotlin
-// 불변객체
+// 읽기 전용 변수
 val popcorn = 5
 val hotdog = 7
 
-// 가변객체
+// 가변 변수
 var customers = 10
 
 fun main() {
@@ -32,8 +32,8 @@ fun main() {
     println(customers)
 }
 ```
-- `val`: 불변객체 (읽기전용)
-- `var`: 가변객체 (읽기전용)
+- `val`: 읽기 전용 변수
+- `var`: 가변 변수
 - `top level`: main 함수 위 선언된 변수
 - 재할당이 필요한 변수의 경우에만 `var`를 사용하고, 기본적으로는 `val`을 사용하는 것이 권장됨
 
