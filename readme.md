@@ -172,3 +172,52 @@ println(shapes)
 // 특정 원소가 있는지 확인하기
 println("circle" in readOnlyShapes)
 ```
+
+**Set**
+
+Set은 순서가 없으며 중복을 허용하지 않는다.
+
+- 읽기 전용 Set은 `setOf()`를 통해 `Set`를 생성한다.
+- 가변 Set은 `mutableSetOf()`를 통해 `MutableSet`을 생성한다.
+- Set 생성 시, 코틀린은 Set 저장된 원소의 타입을 추론한다.
+- 원소 타입을 명시하기 위해서는 Set 타입 선언 뒤 `<>`에 타입을 선언한다. 
+
+```kotlin
+// 읽기 전용 Set, 중복된 "cherry" 하나는 드랍된다.
+val readOnlyFruit = setOf("apple", "banana", "cherry", "cherry")
+// 원소 타입을 명시한 가변 Set
+val fruit: MutableSet<String> = mutableSetOf("apple", "banana", "cherry", "cherry")
+```
+
+- 읽기 전용 뷰를 만들기 위해 캐스팅을 활용할 수 있다.
+```kotlin
+// 원소 타입을 명시한 가변 Set
+val fruit: MutableSet<String> = mutableSetOf("apple", "banana", "cherry", "cherry")
+// 가변 Set을 읽기 전용 Set으로 캐스팅
+val fruitLocked: Set<String> = fruit
+```
+
+- Set은 순서가 없으므로 인덱스를 통한 접근은 불가능하다.
+
+- Set은 다음과 같은 함수를 제공한다.
+  - count : 원소 개수 구하기
+  - add : 원소 추가하기 
+  - remove : 원소 제거하기
+```kotlin
+// 원소 개수 얻기
+println("This set has ${fruit.count()} items")
+
+// 가변 리스트에서 원소를 추가하거나 제거하기
+fruit.add("dragonFruit")
+println(fruit)
+
+fruit.remove("dragonFruit")
+println(fruit)
+```
+
+- Set은 `in` 연산자로 특정 원소의 포함여부를 알 수 있다.
+```kotlin
+// 특정 원소가 있는지 확인하기
+println("banana" in readOnlyFruit)
+```
+
